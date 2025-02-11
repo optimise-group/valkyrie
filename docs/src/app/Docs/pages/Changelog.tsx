@@ -8,6 +8,12 @@ export default function Changelog() {
   return (
     <Stack gap={5}>
       <Release
+        name="Valkyrie 1.0 alpha 54"
+        version="1.0.0-alpha.54"
+        date="11 February 2025"
+        newIcons={['file-audio', 'file-excel', 'file-word', 'file-powerpoint', 'file-text', 'file-zip', 'folder-open', 'folder-plus', 'folder-min']}
+      />
+      <Release
         name="Valkyrie 1.0 alpha 53"
         version="1.0.0-alpha.53"
         date="31 January 2025"
