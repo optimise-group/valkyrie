@@ -1,6 +1,6 @@
 {
   "name": "@sippy-platform/valkyrie",
-  "version": "0.21.1",
+  "version": "1.0.0-alpha.54",
   "description": "The iconography of Sippy.",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -9,23 +9,13 @@
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "clean": "rimraf dist",
-    "docs:fonts": "copyfiles -a \"dist/fonts/*.*\" \"docs/fonts\" -f",
-    "fonts": "npm run fonts:generate && npm run fonts:docs",
-    "fonts:generate": "mkdirp dist/fonts && fantasticon",
-    "fonts:docs": "copyfiles -a \"dist/fonts/*.*\" \"docs/fonts\" -f",
     "icons": "npm run icons:clean && npm run icons:ts",
     "icons:clean": "svgo -f ./icons -o ./icons",
-    "icons:mellow:clean": "svgo -f ./mellow -o ./mellow",
     "icons:ts": "svg-to-ts-constants",
-    "mellow": "svgo -f ./mellow -o ./mellow",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "npm run prod",
-    "prod": "npm run clean && npm run icons && npm run fonts && npm run build && npm run scss",
-    "scss": "npm run scss:compile && npm run scss:prefix && npm run scss:copy",
-    "scss:compile": "node-sass src -o dist --output-style compressed",
-    "scss:copy": "bundle-scss --mask \"src/valkyrie.scss\" --dest \"dist/valkyrie.scss\"",
-    "scss:prefix": "postcss -u autoprefixer -r dist/*.css --map"
+    "pages": "node build/generate-pages.js --verbose",
+    "lib": "node build/generate-library.js",
+    "prod": "npm run icons && npm run pages && npm run lib && npm run build"
   },
   "repository": {
     "type": "git",
@@ -47,28 +37,22 @@
   },
   "homepage": "https://sippy-platform.github.io/valkyrie",
   "peerDependencies": {
-    "react": ">=16.x",
-    "clsx": ">=1.x"
+    "@emotion/css": ">=11.x",
+    "react": ">=16.x"
+  },
+  "dependencies": {
+    "html-react-parser": "^5.2"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "autoprefixer": "10.4.12",
-    "bundle-scss": "1.5.1",
-    "clsx": "1.2.1",
-    "copyfiles": "2.4.1",
-    "fantasticon": "1.2.2",
-    "node-sass": "7.0.3",
-    "nodemon": "2.0.20",
+    "@types/react": "^19.0.1",
+    "nodemon": "3.1.9",
     "npm-run-all": "4.1.5",
-    "postcss": "8.4.17",
-    "postcss-cli": "10.0.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "rimraf": "3.0.2",
-    "sass": "1.55.0",
-    "svg-to-ts": "8.8.1",
-    "svgo": "2.8.0",
-    "typescript": "4.8.4"
+    "picocolors": "1.1.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "svg-to-ts": "12.0.0",
+    "svgo": "3.3.2",
+    "typescript": "5.7.3"
   },
   "browserslist": {
     "production": [

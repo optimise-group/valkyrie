@@ -1,7 +1,7 @@
 {
   "srcFiles": ["./icons/**/*.svg"],
   "outputDirectory": "./src",
-  "interfaceName": "ValkyrieIcon",
+  "interfaceName": "IValkyrieIcon",
   "typeName": "Valkyrie",
   "prefix": "vi",
   "fileName": "Valkyrie",
